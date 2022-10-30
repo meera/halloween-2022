@@ -2,12 +2,19 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  name: string
+  trigger: boolean
 }
+  let currentstate = false;
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  if (req.method === 'POST') {
+    currentstate = !currentstate;
+    res.status(200).json({ trigger: currentstate })
+  } else {
+    res.status(200).json({ trigger: currentstate })
+  }
+
 }
