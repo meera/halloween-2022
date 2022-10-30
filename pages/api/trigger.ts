@@ -6,13 +6,19 @@ type Data = {
 }
   let currentstate = false;
 
+
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
   if (req.method === 'POST') {
-    currentstate = !currentstate;
-    res.status(200).json({ trigger: currentstate })
+    currentstate = true;
+    res.status(200).json({ trigger: currentstate });
+
+    setTimeout(() => {
+      currentstate = false;
+    }, 2000);
   } else {
     res.status(200).json({ trigger: currentstate })
   }
