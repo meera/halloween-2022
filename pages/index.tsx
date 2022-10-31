@@ -3,20 +3,20 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import useSWR from "swr";
 import { useRef, useState } from "react";
+import useSound from 'use-sound';
 
 export default function Home() {
 
   const [play, setPlay] = useState<boolean>(false)
+  const [playBase, playbaseData] = useSound('/let-the-mystery-unfold.mp3');
+  const [playTrigger] = useSound('/bigbang.wav');
+
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
   const { data, error } = useSWR("/api/trigger", fetcher, {
     refreshInterval: 100,
   });
-  const musicPlayers = useRef<HTMLAudioElement | undefined>(
-    typeof Audio !== "undefined"
-      ? new Audio("/let-the-mystery-unfold.mp3")
-      : undefined
-  );
+ 
 
   if (error) return "An error has occurred.";
   if (!data) return "Loading...";
@@ -30,9 +30,9 @@ export default function Home() {
   if( !play ){
     return <button onClick={handleClick}> Play</button>
   }
-  if (data.trigger) {
-    musicPlayers.current?.play();
-
+  if (!data.trigger) {
+    // Base Line
+    playBase();
     return (
       <div className={styles.container}>
         <Head>
@@ -41,13 +41,25 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <main className={styles.main}>
-          <Image src="/pumpkin.gif" alt="pumpkin" fill />
+        <main >
+        <div style={{ position: 'relative', width: "100vw", height: '100vh' }}>
+      <Image
+        alt="Mountains"
+        src="/pumpkin.gif"
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: 'contain',
+        }}
+      />
+    </div>
         </main>
       </div>
     );
   } else {
-    musicPlayers.current?.play();
+    // Trigger
+    playbaseData.stop();
+    playTrigger();
 
     return (
       <div className={styles.container}>
@@ -58,7 +70,20 @@ export default function Home() {
         </Head>
 
         <main className={styles.main}>
-          <Image src="/cat-pumpkin.gif" alt="pumpkin" fill />
+
+         
+
+        <div style={{ position: 'relative', width: "100vw", height: '100vh' }}>
+      <Image
+        alt="Mountains"
+        src="/angry-pumpkin.gif"
+        fill
+        sizes="100vw"
+        style={{
+          objectFit: 'contain',
+        }}
+      />
+    </div>
         </main>
       </div>
     );
