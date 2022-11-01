@@ -27,7 +27,7 @@ export default function Home() {
     interrupt: true,
   });
 
-  const [playTrigger2, playtrigger2Data] = useSound('/trigger-2.wav' , {
+  const [playTrigger2, playtrigger2Data] = useSound('/sound_79.mp3' , {
     volume: 10,
     // `interrupt` ensures that if the sound starts again before it's
     // ended, it will truncate it. Otherwise, the sound can overlap.
@@ -85,7 +85,7 @@ export default function Home() {
 
 
     const chooseSound = Math.floor(Math.random() * 2);
-    if (chooseSound)
+    if (chooseSound == 0)
        playTrigger1();
     else 
        playTrigger2();
