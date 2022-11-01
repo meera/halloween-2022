@@ -18,7 +18,7 @@ export default function handler(
 
     setTimeout(() => {
       currentstate = false;
-    }, 2000);
+    }, 5000);
   } else {
     res.status(200).json({ trigger: currentstate })
   }
