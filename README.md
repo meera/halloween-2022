@@ -7,13 +7,26 @@ We build a Halloween display using a Projector, two RaspberryPis, and a Nextjs w
 
 This is how it worked -  We displayed a Halloween-themed base image on the projector with spooky music. We entice kids to push a button. And when they push the button, a scary image appears on the project with a screeching sound scaring the kids. This effect is highly impactful on their dark Halloween night. 
 
+## Demo Time 
 
-[![Watch the Demo](https://img.youtube.com/vi/b1stF_eUXxA/maxresdefault.jpg)](https://youtu.be/b1stF_eUXxA)
 
+
+
+
+[![Watch the Demo](https://raw.githubusercontent.com/meera/halloween-2022/main/public/demo-thumbnail.png)](https://youtu.be/b1stF_eUXxA)
+
+You can check out deployed version:
+
+Open this site on one browser window [>> Live Demo <<](https://halloween.askus.how/)
+
+On second browser window open [this trigger window](https://halloween.askus.how/pressme)
+
+Press the button on second browser screen to test.
 
 ## SETUP
 
 This project is easy to put together. If you like to build this on your own home, follow these instructions.
+
 
 
 ### Equipment List
@@ -66,14 +79,17 @@ RaspberryPi script is in the same repository (switch.py). Update the script's UR
 
 
 
-
 ## Go!   
 
 You are all set. Now wait for trick-or-treaters!!! 
 
-Entice kids to press the button. We used script 'Hey kid - you brave to push the button and see what happens? or 'Hey kids.. . Don't push the button - don't  risk it (negative prompt)'.. 
+Entice kids to press the button. We used script 'Hey kid - you brave to push the button and see what happens? or 'Hey kids.. . Don't push the button - don't  risk it (negative prompt)'.
 
-## Final Thought
+
+
+
+
+## After Thought
 This project was put together in short amount of time in hackathon style. Here are few thoughts for next year.
 
 * Implement motion sensor. Animation changes when RaspberryPi detects motion anticipating and luring kids to press the button.
